@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台南 2 天 1 夜吃貨專屬行程 (2026)</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #E2583E; /* 溫暖的台南紅/磚瓦橘 */
+            --bg-color: #f7f9fb;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-sub: #7f8c8d;
+            --nav-bg: #ffffff;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 40px;
+        }
+        /* Header 區域 */
+        header {
+            background: linear-gradient(135deg, #E2583E, #f39c12);
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        /* 頂部頁籤/天數切換 */
+        .day-nav {
+            display: flex;
+            justify-content: center;
+            background: var(--nav-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .day-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-sub);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .day-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        /* 主容器 */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .day-section {
+            margin-bottom: 40px;
+        }
+        .day-title {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin: 25px 0 15px 0;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            font-weight: bold;
+        }
+        /* 行程卡片 (Timeline 樣式) */
+        .timeline {
+            position: relative;
+            border-left: 3px dashed #bdc3c7;
+            margin-left: 15px;
+            padding-left: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .card:active {
+            transform: scale(0.98);
+        }
+        /* 時間錨點 */
+        .time-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        .card::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            border: 3px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: -29px;
+            top: 24px;
+            box-shadow: 0 0 0 3px rgba(226, 88, 62, 0.2);
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        .card .note {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .card .tips {
+            background-color: #fcf3f2;
+            border-left: 3px solid #e74c3c;
+            padding: 8px;
+            font-size: 0.85rem;
+            color: #c0392b;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        /* 導航按鈕 */
+        .btn-map {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+            box-shadow: 0 2px 5px rgba(39, 174, 96, 0.2);
+        }
+        .btn-map i {
+            margin-right: 6px;
+        }
+        .btn-map:hover, .btn-map:active {
+            background-color: #219653;
+        }
+        /* 手機 RWD */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>台南美食探索之旅 🚙</h1>
+        <p>7/18(六) - 7/19(日) | 開車吃貨 RWD 行程</p>
+    </header>
+    <div class="day-nav">
+        <a href="#day1" class="day-tab active" id="tab-day1">Day 1 (7/18)</a>
+        <a href="#day2" class="day-tab" id="tab-day2">Day 2 (7/19)</a>
+    </div>
+    <div class="container">
+        
+        <!-- Day 1 Section -->
+        <div id="day1" class="day-section">
+            <div class="day-title">第一天：中西區美食、神農街老屋與微醺安平</div>
+            <div class="timeline">
+                <div class="card">
+                    <span class="time-badge">10:30 - 11:30</span>
+                    <h3>抵達台南 🚙 租車出發</h3>
+                    <p class="note">搭乘和欣客運抵達【台南轉運站】，至預定地取車，準備開往美食一級戰區中西區！</p>
+                    <div class="tips">🅿️ 建議停車點：請直接導航停至「海安路地下停車場」，好停、有冷氣，走去國華街、正興街和神農街極近。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=海安路地下停車場" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至海安路地下停車場
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">11:30 - 14:00</span>
+                    <h3>國華街、正興街美食大暴走 </h3>
+                    <p class="note">停好車後開啟步行吃貨模式！先吃個外酥內軟的<b>阿文米粿</b>，再喝碗蔬菜甜味的<b>阿棠牛肉湯</b>，接著散步去排<b>蜷尾家甘味處</b>吃限定霜淇淋，買杯<b>青山茶行</b>解膩。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台南市中西區保安路74號阿文米粿" class="btn-map" target="_blank" style="margin-bottom: 8px;">
+                        <i class="fa-solid fa-map-pin"></i> 1. 導航至 阿文米粿
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台南市中西區尊王路102號品味鱔魚意麵" class="btn-map" target="_blank" style="margin-bottom: 8px; background-color: #2980b9;">
+                        <i class="fa-solid fa-map-pin"></i> 2. 導航至 品味鱔魚意麵 (附近為阿棠)
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=蜷尾家甘味處散步甜食" class="btn-map" target="_blank" style="background-color: #8e44ad;">
+                        <i class="fa-solid fa-map-pin"></i> 3. 導航至 蜷尾家
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">14:00 - 14:30</span>
+                    <h3>双生綠豆沙牛奶</h3>
+                    <p class="note">排隊買杯香濃的綠豆沙牛奶，因赤崁樓周邊人多難停，建議一人下車購買，一人開車在附近慢繞。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=双生綠豆沙牛奶" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至双生綠豆沙
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">15:00 - 16:30</span>
+                    <h3>南岸山‧綺 民宿 Check-in</h3>
+                    <p class="note">回到安平的設計感民宿辦理入住。下午最熱的時間點回房間吹個冷氣、放行李小憩。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台南市安平區金城里世平五街10巷35號" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 南岸山‧綺
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">16:30 - 17:30</span>
+                    <h3>阿財牛肉湯</h3>
+                    <p class="note">就在安平區，此時段避開觀光人潮，點一碗牛肉湯配肉燥飯，湯頭極佳！</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=阿財牛肉湯安平店" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 阿財牛肉湯
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">18:00 - 19:45</span>
+                    <h3>晚餐：保安路經典小吃雙擊</h3>
+                    <p class="note">開車返回中西區，推薦再次停至海安路停車場。<b>品味鱔魚意麵</b>與傳奇排隊名店 <b>阿明豬心冬粉</b> 都在此時開門，建議分頭排隊攻略！</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=阿明豬心冬粉" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 阿明豬心冬粉
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">19:45 - 22:30</span>
+                    <h3>神農街漫步 & 先緩 Bar 微醺時光 🍸</h3>
+                    <p class="note">漫步在燈火通明的神農街。接著 20:00 前往老巷弄底的<b>先緩 Bar</b>。享受古厝小酌氛圍。</p>
+                    <div class="tips">⚠️ 注意安全：喝酒絕對不開車！結束後建議搭計程車回安平民宿，或由不喝酒的夥伴駕駛。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=先緩Bar台南" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 先緩 Bar
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Day 2 Section -->
+        <div id="day2" class="day-section">
+            <div class="day-title">第二天：在地特色早餐、超人氣甜點排隊與回程</div>
+            <div class="timeline">
+                <div class="card">
+                    <span class="time-badge">08:30 - 10:30</span>
+                    <h3>大灣三王廟肉粿 (永康) 或 在地牛肉湯</h3>
+                    <p class="note">開車直奔永康區吃在地限定的<b>三王廟肉粿</b>！若不想跑遠，也可直接開去南區吃<b>美味牛肉湯</b>或北區<b>旗哥牛肉湯</b>。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=大灣三王廟肉粿" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 大灣三王廟肉粿
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">11:00 - 13:00</span>
+                    <h3>荼穀 TUGU 茶沙龍 / 阿蓮牛肉湯</h3>
+                    <p class="note">到高質感的茶飲空間 <b>荼穀 TUGU</b> 享受放鬆的午前。若還吃得下，去公園路吃清甜的 <b>阿蓮牛肉湯</b>。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=TUGU荼穀台南店" class="btn-map" target="_blank" style="margin-bottom: 8px;">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 荼穀 TUGU
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=阿蓮牛肉湯公園路" class="btn-map" target="_blank" style="background-color: #d35400;">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 阿蓮牛肉湯
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">13:00 - 14:15</span>
+                    <h3>退房整理 🚙 行李上車</h3>
+                    <p class="note">回到安平民宿辦理退房，行李直接上車，輕鬆前往東區。</p>
+                </div>
+                <div class="card">
+                    <span class="time-badge">14:30 - 17:00</span>
+                    <h3>檨檨 sān sān (極力推薦甜點！🧁)</h3>
+                    <p class="note">15:00 準時開始營業，建議 14:45 就先到現場排隊！他們的日式芭菲、盤飾甜點極度美味精緻，用這餐甜點作台南行的結尾超幸福。</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=檨檨sānsān" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-location-dot"></i> 導航至 檨檨 sān sān
+                    </a>
+                </div>
+                <div class="card">
+                    <span class="time-badge">17:00 - 18:00</span>
+                    <h3>歸還車輛 ➔ 抵達高鐵台南站 🚅</h3>
+                    <p class="note">由東區開車前往高鐵台南站（車程約30分鐘），預留歸還租車手續時間，準備搭乘 18:00 的高鐵回台北！</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=高鐵台南站" class="btn-map" target="_blank">
+                        <i class="fa-solid fa-train"></i> 導航至 高鐵台南站
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 切換 Day 1 / Day 2 Tab 的簡單邏輯
+        const tabDay1 = document.getElementById('tab-day1');
+        const tabDay2 = document.getElementById('tab-day2');
+        window.addEventListener('scroll', () => {
+            const day2Section = document.getElementById('day2');
+            const day2Top = day2Section.getBoundingClientRect().top;
+            
+            if (day2Top <= 120) {
+                tabDay1.classList.remove('active');
+                tabDay2.classList.add('active');
+            } else {
+                tabDay1.classList.add('active');
+                tabDay2.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
